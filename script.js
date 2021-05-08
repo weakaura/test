@@ -49,10 +49,10 @@ function init() {
 
     let orangePic = document.getElementById("orangePic")
     function changeOrangePic() {
-        if (orangePic.src == "file:///C:/Users/king%20komp/Desktop/lesson6/img/orange.jpg") {
-            return orangePic.src = "file:///C:/Users/king%20komp/Desktop/lesson6/img/orange2.jpg"
+        if (orangePic.src == "img/orange.jpg") {
+            return orangePic.src = "img/orange2.jpg"
         } else {
-            return orangePic.src = "file:///C:/Users/king%20komp/Desktop/lesson6/img/orange.jpg"
+            return orangePic.src = "img/orange.jpg"
         }
     }
     orangePic.addEventListener('click', changeOrangePic)
@@ -60,12 +60,12 @@ function init() {
 
     let applePic = document.getElementById("applePic")
     function changeApplePic() {
-        if (applePic.src == "file:///C:/Users/king%20komp/Desktop/lesson6/img/apple.jpg") {
-            return applePic.src = "file:///C:/Users/king%20komp/Desktop/lesson6/img/apple2.jpg"
-        } else if (applePic.src == "file:///C:/Users/king%20komp/Desktop/lesson6/img/apple2.jpg") {
-            applePic.src = "file:///C:/Users/king%20komp/Desktop/lesson6/img/apple3.png"
+        if (applePic.src == "img/apple.jpg") {
+            return applePic.src = "img/apple2.jpg"
+        } else if (applePic.src == "img/apple2.jpg") {
+            applePic.src = "img/apple3.png"
         } else {
-            applePic.src = "file:///C:/Users/king%20komp/Desktop/lesson6/img/apple.jpg"
+            applePic.src = "img/apple.jpg"
         }
     }
     applePic.addEventListener('click', changeApplePic)
