@@ -47,29 +47,26 @@ function init() {
 
     // 2 * У товара может быть несколько изображений. Нужно менять картинку при нажатии на картинку
 
+    oranges = ["img/orange.jpg", "img/orange2.jpg"]
+    apples = ["img/apple.jpg", "img/apple2.jpg", "img/apple3.png"]
+    let i = 0;
     let orangePic = document.getElementById("orangePic")
+
     function changeOrangePic() {
-        if (orangePic.src == "img/orange.jpg") {
-            return orangePic.src = "img/orange2.jpg"
-        } else {
-            return orangePic.src = "img/orange.jpg"
-        }
+        i++; i %= oranges.length;
+        orangePic.src = oranges[i];
     }
     orangePic.addEventListener('click', changeOrangePic)
 
 
     let applePic = document.getElementById("applePic")
     function changeApplePic() {
-        if (applePic.src == "img/apple.jpg") {
-            return applePic.src = "img/apple2.jpg"
-        } else if (applePic.src == "img/apple2.jpg") {
-            applePic.src = "img/apple3.png"
-        } else {
-            applePic.src = "img/apple.jpg"
-        }
+        i++; i %= apples.length;
+        applePic.src = apples[i];
     }
     applePic.addEventListener('click', changeApplePic)
 
 }
 
 window.onload = init;
+
