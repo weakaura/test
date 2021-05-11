@@ -5,32 +5,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson 6</title>
+    <title>Lesson 7</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
 
 <body>
-    <div class="fruit">
-        <img src="img/apple.jpg" alt="apple" width="200" height="200" id="applePic">
-        <button id="addApple" class="butt">Добавить яблоко (10 рублей)</button>
+    <div id="basketWrapper">
+        <button id="showButton">Скрыть корзину</button>
+        <button id="resetButton">Сбросить корзину</button>
+        <div id="basketDiv"></div>
+        <br>
+        <button id="addMilk">Молоко, 10 рублей</button>
+        <button id="addBread">Хлеб, 15 рублей</button>
+        <button id="addApple">Яблоко, 20 рублей</button><br>
+        <button id="nextButton">Далее</button>
     </div>
-
-    <div class="fruit">
-        <img src="img/orange.jpg" alt="orange" width="200" height="200" id="orangePic">
-        <button id="addOrange" class="butt">Добавить апельсин (20 рублей)</button>
+    <div id="bottomWrapper">
+        <span>Адрес доставки</span> <br>
+        <textarea name="" id="address" cols="30" rows="10"></textarea>
+        <br>
+        <span>Комментарий</span><br>
+        <textarea name="" id="comms" cols="30" rows="10"></textarea><br>
+        <button id="sendButton">Отправить</button>
+        <button id="cancelButton">Отмена</button>
     </div>
-    <div class="fruit">
-        <img src="img/banana.jpg" alt="banana" width="200" height="200">
-        <button id="addBanana" class="butt">Добавить банан (30 рублей)</button>
-    </div>
-    <br>
-    <br>
-
-    <div id="basket" class="basket">korzina</div>
-    <br>
-    <button id="resetButton" class="butt">reset</button>
-
 </body>
 
 </html>

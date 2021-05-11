@@ -1,72 +1,108 @@
 function init() {
 
-    // 1. Добавлять в объект корзины выбранные товары по клику на кнопке «Купить» без перезагрузки страницы;
-    // Привязать к событию покупки товара пересчет корзины и обновление ее внешнего вида.
-
     let basket = {
-        goods: [["apple", 10], ["orange", 20], ["banana", 30]],
+        milk: {
+            price: 10,
+            amount: 0,
+        },
+        bread: {
+            price: 15,
+            amount: 0,
+        },
+        apple: {
+            price: 20,
+            amount: 0,
+        },
         amount: 0,
         price: 0,
     }
 
-    let basketDiv = document.getElementById("basket");
-    basketDiv.innerHTML = "В корзине " + basket.amount + " товаров на сумму " + basket.price + " рублей";
-
-    function addApple() {
-        return basket.amount = basket.amount + 1,
-            basket.price = basket.price + basket.goods[0][1],
-            basketDiv.innerHTML = "В корзине " + basket.amount + " товаров на сумму " + basket.price + " рублей";
+    // Молоко
+    let addMilkButton = document.getElementById("addMilk")
+    function addMilkToBasket() {
+        basket.amount++
+        basket.milk.amount++
+        basket.price += basket.milk.price
+        basketDiv.innerHTML = "В корзине: <br>" + "Молока: " + basket.milk.amount + "<br> Хлеба: " + basket.bread.amount + "<br> Яблок: " + basket.apple.amount + "<br> Общая стоимость: " + basket.price + " рублей."
     }
-    function addOrange() {
-        return basket.amount = basket.amount + 1,
-            basket.price = basket.price + basket.goods[1][1],
-            basketDiv.innerHTML = "В корзине " + basket.amount + " товаров на сумму " + basket.price + " рублей";
+    addMilkButton.addEventListener('click', addMilkToBasket)
+
+    //Хлеб
+    let addBreadButton = document.getElementById("addBread")
+    function addBreadToBasket() {
+        basket.amount++
+        basket.bread.amount++
+        basket.price += basket.bread.price
+        basketDiv.innerHTML = "В корзине: <br>" + "Молока: " + basket.milk.amount + "<br> Хлеба: " + basket.bread.amount + "<br> Яблок: " + basket.apple.amount + "<br> Общая стоимость: " + basket.price + " рублей."
     }
-    function addBanana() {
-        return basket.amount = basket.amount + 1,
-            basket.price = basket.price + basket.goods[2][1],
-            basketDiv.innerHTML = "В корзине " + basket.amount + " товаров на сумму " + basket.price + " рублей";
+    addBreadButton.addEventListener('click', addBreadToBasket)
+
+    //Яблоки   
+    let addAppleButton = document.getElementById("addApple")
+    function addAppleToBasket() {
+        basket.amount++
+        basket.apple.amount++
+        basket.price += basket.apple.price
+        basketDiv.innerHTML = "В корзине: <br>" + "Молока: " + basket.milk.amount + "<br> Хлеба: " + basket.bread.amount + "<br> Яблок: " + basket.apple.amount + "<br> Общая стоимость: " + basket.price + " рублей."
     }
-    function resetBasket() {
-        return basket.amount = 0,
-            basket.price = 0,
-            basketDiv.innerHTML = "В корзине " + basket.amount + " товаров на сумму " + basket.price + " рублей";
+    addAppleButton.addEventListener('click', addAppleToBasket)
+
+    //Кнопка показать/скрыть корзину
+    let basketDiv = document.getElementById("basketDiv")
+    let showBasketButton = document.getElementById("showButton")
+    function showBasket() {
+        if (basketDiv.style.display == "none") {
+            basketDiv.style.display = "block"
+            showBasketButton.innerHTML = "Скрыть козрину"
+        } else {
+            basketDiv.style.display = "none"
+            showBasketButton.innerHTML = "Показать корзину"
+        }
     }
+    showBasketButton.addEventListener('click', showBasket)
 
-    let appleButton = document.getElementById("addApple")
-    appleButton.addEventListener('click', addApple)
-
-    let orangeButton = document.getElementById("addOrange")
-    orangeButton.addEventListener('click', addOrange)
-
-    let bananaButton = document.getElementById("addBanana")
-    bananaButton.addEventListener('click', addBanana)
-
+    //Кнопка Reset
     let resetButton = document.getElementById("resetButton")
+    function resetBasket() {
+        basket.amount = 0;
+        basket.milk.amount = 0;
+        basket.bread.amount = 0;
+        basket.apple.amount = 0;
+        basket.price = 0;
+        basketDiv.innerHTML = "Корзина пуста."
+        // basketDiv.innerHTML = "В корзине: <br>" + "Молока: " + basket.milk.amount + "<br> Хлеба: " + basket.bread.amount + "<br> Яблок: " + basket.apple.amount + "<br> Общая стоимость: " + basket.price + " рублей."
+    }
     resetButton.addEventListener('click', resetBasket)
 
-    // 2 * У товара может быть несколько изображений. Нужно менять картинку при нажатии на картинку
-
-    oranges = ["img/orange.jpg", "img/orange2.jpg"]
-    apples = ["img/apple.jpg", "img/apple2.jpg", "img/apple3.png"]
-    let i = 0;
-    let orangePic = document.getElementById("orangePic")
-
-    function changeOrangePic() {
-        i++; i %= oranges.length;
-        orangePic.src = oranges[i];
+    //Кнопка Далее
+    let basketWrapper = document.getElementById("basketWrapper")
+    let nextButton = document.getElementById("nextButton")
+    function next() {
+        basketWrapper.style.display = "none"
+        bottomWrapper.style.display = "block"
     }
-    orangePic.addEventListener('click', changeOrangePic)
+    nextButton.addEventListener('click', next)
 
+    // address, comms
+    let addressArea = document.getElementById("address")
+    let commsArea = document.getElementById("comms")
 
-    let applePic = document.getElementById("applePic")
-    function changeApplePic() {
-        i++; i %= apples.length;
-        applePic.src = apples[i];
+    //Кнопка Отправить
+    let sendButton = document.getElementById("sendButton")
+    function send() {
+        addressArea.innerHTML = ""
+        commsArea.innerHTML = ""
     }
-    applePic.addEventListener('click', changeApplePic)
+    sendButton.addEventListener('click', send)
+
+    //Кнопка Отмена
+    let cancelButton = document.getElementById("cancelButton")
+    function cancel() {
+        basketWrapper.style.display = "block"
+        bottomWrapper.style.display = "none"
+    }
+    cancelButton.addEventListener('click', cancel)
 
 }
 
 window.onload = init;
-
